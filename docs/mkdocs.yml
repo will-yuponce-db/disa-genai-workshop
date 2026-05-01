@@ -1,0 +1,54 @@
+site_name: DISA GenAI Workshop
+site_description: A 2.5-hour Databricks GenAI workshop for cyber threat intelligence, hosted on Vocareum.
+site_url: https://your-handle.github.io/disa-genai-workshop/
+repo_url: https://github.com/your-handle/disa-genai-workshop
+repo_name: disa-genai-workshop
+edit_uri: edit/main/docs/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - Modules:
+      - 0 — Setup: modules/00-setup.md
+      - 1 — Document ingest: modules/01-ingest.md
+      - 2 — AI Playground: modules/02-playground.md
+      - 3 — Genie: modules/03-genie.md
+      - 4 — Knowledge Assistant: modules/04-knowledge-assistant.md
+      - 5 — Compound agent: modules/05-compound-agent.md
+      - 6 — App + vibe-code: modules/06-app.md
+  - Vibe-code prompt: vibe-code.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - tables
+  - attr_list

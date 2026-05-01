@@ -1,0 +1,42 @@
+# Databricks Apps configuration for the DISA CTI demo app.
+
+command:
+  - "bash"
+  - "-c"
+  - |
+    set -x
+    echo "[boot] starting node backend/server.js"
+    exec env NODE_OPTIONS='--max-old-space-size=1536' node backend/server.js
+
+env:
+  - name: NODE_ENV
+    value: "production"
+  - name: PORT
+    value: "8000"
+
+  # SQL warehouse — for vibe-coded components and Genie SQL execution
+  - name: DATABRICKS_HTTP_PATH
+    valueFrom: "sql-warehouse"
+  - name: DATABRICKS_WAREHOUSE_ID
+    valueFrom: "sql-warehouse"
+  - name: DATABRICKS_CATALOG
+    value: "disa_workshop"
+  - name: DATABRICKS_SCHEMA
+    value: "threat_intel"
+
+  # Compound agent endpoint
+  - name: DATABRICKS_AGENT_ENDPOINT
+    value: "disa-cti-agent"
+  - name: DATABRICKS_AGENT_MAX_ACTIONS
+    value: "5"
+
+resources:
+  sql_warehouse:
+    - name: sql-warehouse
+      id: "REPLACE_WITH_WAREHOUSE_ID"
+      permission: CAN_USE
+
+  serving_endpoint:
+    - name: agent-endpoint
+      endpoint_name: "disa-cti-agent"
+      permission: CAN_QUERY
