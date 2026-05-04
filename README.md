@@ -89,6 +89,16 @@ done
 
 Each notebook reads upstream artifacts from `_workshop_config`, so you can run them in any order as long as 00 has run first; 03 and 04 must run before 05; 06 (NetOps) is independent and can run any time after 00; 07 (app) needs 05 deployed.
 
+## Fallback: download all notebooks as a zip
+
+If the Vocareum auto-import fails (or you want a local copy), grab the latest bundle directly from this repo:
+
+```
+https://github.com/will-yuponce-db/disa-genai-workshop/raw/main/dist/disa-genai-workshop-notebooks.zip
+```
+
+Then `databricks workspace import-dir` it into your own workspace, or unzip and `Run All` from the UI. The zip is rebuilt automatically by `.github/workflows/build-zip.yml` whenever any notebook changes on `main`.
+
 ## Catalog and schema
 
 The notebooks default to writing into `main.cti_<user>`. If you don't have CREATE rights on that catalog, change the catalog name in 00 (and the same string appears in 01-06; a global find-and-replace works) before running. Each attendee gets their own schema `cti_<sanitized-username>` (derived in `_config.ipynb`).

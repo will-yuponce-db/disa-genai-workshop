@@ -10,6 +10,20 @@
 
 That's it. The notebook does the rest.
 
+### Fallback if the auto-imported notebooks are missing
+
+If the workspace folder is empty, download the latest bundle directly:
+
+```
+https://github.com/will-yuponce-db/disa-genai-workshop/raw/main/dist/disa-genai-workshop-notebooks.zip
+```
+
+Unzip and import via the workspace UI (**File** → **Import**) or the CLI:
+
+```bash
+databricks workspace import-dir notebooks /Workspace/Users/<you>/disa-genai-workshop/notebooks --overwrite
+```
+
 ## What `00_setup` does
 
 | Step | Output |

@@ -1,0 +1,32 @@
+name: Build notebooks zip
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "notebooks/**"
+      - "scripts/build_notebooks_zip.sh"
+      - ".github/workflows/build-zip.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build zip
+        run: ./scripts/build_notebooks_zip.sh
+      - name: Commit refreshed zip if it changed
+        run: |
+          if git diff --quiet dist/disa-genai-workshop-notebooks.zip; then
+            echo "zip unchanged"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add dist/disa-genai-workshop-notebooks.zip
+            git commit -m "ci: refresh notebooks zip"
+            git push
+          fi
