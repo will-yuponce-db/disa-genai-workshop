@@ -4,6 +4,8 @@ A 2.5 hour, hands-on Databricks workshop for cyber threat intelligence and vulne
 
 > Audience: DISA analysts and engineers (mixed). Hosted on Vocareum. All data is unclassified and public open source.
 
+📖 **Live docs:** <https://will-yuponce-db.github.io/disa-genai-workshop/>
+
 ## What you will build
 
 A compound AI agent for **cyber threat intelligence**. By the end of the workshop, you can ask a single natural-language question — *"A new CISA advisory just dropped at this URL. Find related KEV entries, tell me which STIG controls apply, and summarize the operational impact"* — and the agent will fetch the advisory, parse it, query CVE/KEV/STIG tables, ground its answer in DoD documentation, and respond in seconds.
@@ -107,7 +109,7 @@ You'll also need `CREATE SCHEMA`, `CREATE TABLE`, `CREATE VOLUME`, and `CREATE F
 
 ## Docs site
 
-Live docs: `https://<will-yuponce-db>.github.io/disa-genai-workshop/`
+Live docs: <https://will-yuponce-db.github.io/disa-genai-workshop/>
 
 Build locally:
 
