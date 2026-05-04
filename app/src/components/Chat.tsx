@@ -27,11 +27,14 @@ export default function Chat() {
       setMessages((m) => [...m, { role: "assistant", content: res.assistantMessage }]);
       for (const action of res.actions || []) {
         if (action.type === "navigate") {
-          const params = action.searchParams ? `?${new URLSearchParams(action.searchParams).toString()}` : "";
+          const sp = action.searchParams || {};
+          const filtered: Record<string, string> = {};
+          for (const [k, v] of Object.entries(sp)) if (v !== null) filtered[k] = v;
+          const params = Object.keys(filtered).length ? `?${new URLSearchParams(filtered).toString()}` : "";
           navigate(action.path + params);
         } else if (action.type === "setSearchParams") {
           const next = new URLSearchParams(searchParams);
-          for (const [k, v] of Object.entries(action.searchParams)) {
+          for (const [k, v] of Object.entries(action.searchParams || {})) {
             if (v === null) next.delete(k);
             else next.set(k, v);
           }

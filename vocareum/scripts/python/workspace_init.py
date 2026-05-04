@@ -16,6 +16,8 @@ subprocess.check_call([sys.executable, "-m", "pip", "install", "dbacademy", "-q"
 
 sys.path.insert(0, os.path.dirname(__file__))
 
+import _dbacademy_vs_patch  # noqa: F401  applies SDK name-sanitization
+
 from dbacademy import voc_init
 
 print("=" * 60)

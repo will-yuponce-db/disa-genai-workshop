@@ -1,25 +1,33 @@
-# Module 2 — AI Playground Walkthrough
+# Module 2 — Foundation Models (programmatic Playground)
 
-**Time**: 15 minutes (live demo, no notebook)
+**Time**: 15 minutes
 
-## What we'll cover
+In the original Vocareum-style version of this workshop, Module 2 was a click-through tour of the **AI Playground** UI. This version replaces it with `notebooks/02_ai_playground.ipynb` so the whole workshop runs cell-by-cell without UI excursions.
 
-The AI Playground is the fastest way to compare models, iterate on prompts, and verify tool-calling behavior — without writing code.
+If you want to mirror the same exercises in the AI Playground UI for an audience that prefers visual side-by-side comparisons, the notebook ends with a section explaining which sidebar pages do what.
 
-### 1. Side-by-side comparison
-- Open two panes: Llama 4 Maverick vs Claude Sonnet 4.6.
-- Paste in the prompt from Module 1's `ai_query` and compare the structured outputs.
-- Discuss which model is more reliable for structured extraction at this scale.
+## What the notebook does
 
-### 2. Tool calling
-- Add the `lookup_cve` SQL function (registered in Module 3) as a tool.
-- Ask: *"Tell me about CVE-2024-21412"* — watch the model decide to call `lookup_cve`.
-- Discuss when tool calling is the right pattern vs. one-shot RAG.
+| Cell | What it shows |
+|---|---|
+| 1 | List foundation model endpoints reachable in this workspace (via `WorkspaceClient.serving_endpoints.list`). |
+| 2 | Call `ai_query` from SQL — the simplest way to use a foundation model in a query. |
+| 3 | Call the chat-completions API directly via `WorkspaceClient.api_client.do(...)`. Useful when you want full control over messages, tools, temperature. |
+| 4 | Side-by-side latency + quality comparison: Haiku 4.5 vs Sonnet 4.6 on the same prompt. Same one you'd run in the Playground's "compare two models" pane. |
+| 5 | Tool-calling preview: register a function tool, ask a question that should trigger the call, inspect the `tool_calls` field in the response. Foreshadows Module 5. |
 
-### 3. Prompt versioning
-- Save the working prompt as a version.
-- Show how to export to a notebook cell (handy for productionizing).
+## When to choose the Playground UI instead
+
+The notebook covers 100% of the Playground's behavior, but the UI has nicer ergonomics for exploration:
+
+- **Side-by-side comparison**: AI Playground → "Compare" toggle. Two panes, drag-and-drop prompt sharing.
+- **Prompt versioning**: AI Playground → Save → name the version → export to notebook cell.
+- **Inline parameter sliders**: temperature, max tokens, top_p (the notebook hardcodes these for repeatability).
+
+If you want to demo any of the above in front of an audience: open the AI Playground (sidebar → AI Playground), pick `databricks-claude-sonnet-4-6`, and paste the prompts from the notebook.
 
 ## Why this matters
 
-The Playground is where prompt engineering happens. Once a prompt works there, it's a one-line change to deploy it as an `ai_query` in SQL or a model-serving endpoint.
+The Playground (or this notebook) is where prompt engineering happens. Once a prompt works, it's a one-line change to deploy it as an `ai_query` in SQL or a model-serving call in your agent (Module 5).
+
+[Open the notebook →](https://github.com/your-handle/disa-genai-workshop/blob/main/notebooks/02_ai_playground.ipynb)

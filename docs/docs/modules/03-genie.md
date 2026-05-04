@@ -6,14 +6,47 @@
 
 A Genie space over the CVE / KEV / STIG / asset tables. Attendees ask English questions, Genie writes the SQL.
 
-## Configuration
+`notebooks/03_genie_setup.ipynb` creates the space programmatically via the **`POST /api/2.0/genie/spaces`** REST endpoint. The space id is persisted to `_workshop_config` so Module 5's compound agent can use it without anyone copying an id between cells.
+
+## What the notebook configures
 
 | Setting | Value |
 |---|---|
-| Display name | DISA Threat Intel |
+| Display name | `DISA Threat Intel` |
 | Datasets | `kev_catalog`, `cves`, `affected_assets`, `attack_techniques`, `attack_groups` |
-| Functions | `lookup_cve(cve)`, `assets_for_product(vendor, product)` |
-| Sample questions | 10 curated (see notebook) |
+| Helper SQL functions | `lookup_cve(cve)`, `assets_for_product(vendor, product)` |
+| Warehouse | the first serverless warehouse in the workspace |
+
+The two helper SQL functions are created in cells 2-3 of the notebook (`CREATE OR REPLACE FUNCTION ... RETURNS TABLE`). The Genie space picks them up automatically once they're attached.
+
+## What the notebook leaves to the UI
+
+The Genie REST API today accepts the table list and warehouse but **does not** accept rich `instructions`, `sample_questions`, or `function_identifiers` in the create payload. The notebook prints the recommended values and the Genie space URL; if you want to enrich the space, open it in the UI and:
+
+1. **Sidebar → Genie → DISA Threat Intel.**
+2. Settings → **Instructions** — paste the text below.
+3. Settings → **Sample questions** — paste the 10 questions below.
+4. Settings → **Functions** — confirm `lookup_cve` and `assets_for_product` are listed (they auto-attach because they live in the same schema).
+
+This is optional. The compound agent in Module 5 works without these enrichments.
+
+## Recommended instructions
+
+```text
+You are a cyber threat intelligence analyst assistant for DISA.
+
+Vocabulary:
+- KEV = CISA Known Exploited Vulnerabilities catalog. Entries here are actively exploited in the wild.
+- CVE = Common Vulnerabilities and Exposures, format CVE-YYYY-NNNNN.
+- CVSS = severity score 0.0 - 10.0. Critical >= 9.0, High >= 7.0.
+- Affected assets are joined on vendor + product columns.
+- The kev_catalog table uses column `vendorProject` for vendor (NOT `vendor`).
+- Environments: NIPRNet (unclass), SIPRNet (secret), JWICS (TS).
+
+When asked about "actively exploited" or "high-priority" CVEs, prefer the KEV catalog.
+When asked about asset exposure, join CVEs/KEV to affected_assets via vendor + product.
+Always cite CVE IDs and date ranges in your answer.
+```
 
 ## Sample questions
 

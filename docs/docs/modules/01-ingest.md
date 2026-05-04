@@ -4,7 +4,7 @@
 
 ## What you'll do
 
-Starting from a folder of CISA advisory PDFs in a Unity Catalog volume, end with a structured Delta table of CVEs, affected products, and recommended mitigations. Two SQL calls.
+Starting from the CISA advisory PDFs that `00_setup` landed in `/Volumes/saf_aq_demo_catalog/disa_threat_intel/raw_advisories`, end with a structured Delta table of CVEs, affected products, and recommended mitigations. Two SQL calls.
 
 ## Why this matters for DISA
 
@@ -28,26 +28,28 @@ high-priority advisories citing actively-exploited CVEs
 
 ```sql
 -- Parse PDFs in the volume
-CREATE OR REPLACE TABLE disa_workshop.threat_intel.parsed_advisories AS
+CREATE OR REPLACE TABLE saf_aq_demo_catalog.disa_threat_intel.parsed_advisories AS
 SELECT path, ai_parse_document(content) AS parsed
-FROM READ_FILES('/Volumes/disa_workshop/threat_intel/raw_advisories', format => 'binaryFile');
+FROM READ_FILES('/Volumes/saf_aq_demo_catalog/disa_threat_intel/raw_advisories', format => 'binaryFile');
 
 -- Extract structured fields
-CREATE OR REPLACE TABLE disa_workshop.threat_intel.structured_advisories AS
+CREATE OR REPLACE TABLE saf_aq_demo_catalog.disa_threat_intel.structured_advisories AS
 SELECT
   path,
   ai_query(
-    'databricks-meta-llama-3-3-70b-instruct',
-    CONCAT('Extract structured threat intel from this advisory ...', LEFT(parsed.document.pages[0].content, 8000)),
+    'databricks-claude-haiku-4-5',
+    CONCAT('Extract structured threat intel from this advisory ...', LEFT(CAST(parsed AS STRING), 8000)),
     responseFormat => '{...}'
   ) AS extract
-FROM disa_workshop.threat_intel.parsed_advisories;
+FROM saf_aq_demo_catalog.disa_threat_intel.parsed_advisories;
 ```
+
+The notebook uses Claude Haiku 4.5 by default. Haiku is fast and cheap and reliable for structured extraction at this scale; in Module 2 we compare against Sonnet 4.6 side-by-side.
 
 ## Try it yourself
 
 1. Modify the schema to add a `severity_assessment` field.
-2. Swap `databricks-meta-llama-3-3-70b-instruct` for `databricks-claude-sonnet-4-6` and compare.
+2. Swap `databricks-claude-haiku-4-5` for `databricks-claude-sonnet-4-6` and compare structured output quality.
 3. Use `ai_summarize` to produce a 2-sentence daily-brief across all advisories.
 
 [Open the notebook →](https://github.com/your-handle/disa-genai-workshop/blob/main/notebooks/01_ingest_advisories.ipynb)

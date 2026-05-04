@@ -10,6 +10,9 @@ import sys
 
 subprocess.check_call([sys.executable, "-m", "pip", "install", "dbacademy", "-q"])
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import _dbacademy_vs_patch  # noqa: F401  applies SDK name-sanitization
+
 from dbacademy import voc_init
 
 user = os.getenv("VOC_USER_EMAIL", "unknown@example.com")

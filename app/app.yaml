@@ -20,9 +20,9 @@ env:
   - name: DATABRICKS_WAREHOUSE_ID
     valueFrom: "sql-warehouse"
   - name: DATABRICKS_CATALOG
-    value: "disa_workshop"
+    value: "saf_aq_demo_catalog"
   - name: DATABRICKS_SCHEMA
-    value: "threat_intel"
+    value: "disa_threat_intel"
 
   # Compound agent endpoint
   - name: DATABRICKS_AGENT_ENDPOINT
@@ -33,7 +33,7 @@ env:
 resources:
   sql_warehouse:
     - name: sql-warehouse
-      id: "REPLACE_WITH_WAREHOUSE_ID"
+      id: "8186beb4c2a22a8f"
       permission: CAN_USE
 
   serving_endpoint:

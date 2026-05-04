@@ -10,3 +10,6 @@ __pycache__/
 *.log
 .ipynb_checkpoints/
 docs/site/
+node_modules/
+*.tsbuildinfo
+.DS_Store
