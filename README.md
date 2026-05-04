@@ -34,6 +34,7 @@ Every module is a runnable notebook. Each one writes its outputs (Genie space id
 | 3 | Genie space over CVE / KEV / STIG | 25m | `notebooks/03_genie_setup.ipynb` |
 | 4 | Knowledge Assistant (Agent Bricks) | 20m | `notebooks/04_knowledge_assistant.ipynb` |
 | 5 | Compound agent | 30m | `notebooks/05_compound_agent.ipynb` |
+| 5b | NetOps log analysis with `ai_query` (bulk inference over real outage reports) | 20m | `notebooks/05b_netops_ai_query.ipynb` |
 | 6 | App embed + live vibe-code | 25m | `notebooks/06_deploy_app.ipynb` + `app/` + `prompts/vibe_code_component.md` |
 
 ## Public datasets

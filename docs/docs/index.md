@@ -37,6 +37,7 @@ Every module is a runnable notebook. Each one writes its outputs (Genie space id
 | [3](modules/03-genie.md) | Genie space over CVE / KEV / STIG | 25m |
 | [4](modules/04-knowledge-assistant.md) | Knowledge Assistant (Agent Bricks) | 20m |
 | [5](modules/05-compound-agent.md) | Compound agent | 30m |
+| [5b](modules/05b-netops.md) | NetOps log analysis with `ai_query` (bulk inference over real outage reports) | 20m |
 | [6](modules/06-app.md) | App embed + live vibe-code | 25m |
 
 ## Public datasets
@@ -48,6 +49,7 @@ Every module is a runnable notebook. Each one writes its outputs (Genie space id
 | MITRE ATT&CK | STIX 2.1 JSON |
 | CISA advisories | cisa.gov/news-events |
 | DoD STIGs | [public.cyber.mil](https://public.cyber.mil) |
+| Network operator outage reports | [outages@outages.org mailing list archive](https://puck.nether.net/pipermail/outages/) |
 
 ## One-time UI prerequisites
 
