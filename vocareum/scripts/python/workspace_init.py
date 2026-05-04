@@ -23,6 +23,7 @@ print("=" * 60)
 print("WORKSPACE INIT: DISA GenAI Workshop")
 print("=" * 60)
 
+
 db = voc_init()
 db.workspace_init()
 
