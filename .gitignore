@@ -1,5 +1,5 @@
 node_modules/
-dist/
+dist/*
 !dist/disa-genai-workshop-notebooks.zip
 .venv/
 __pycache__/
