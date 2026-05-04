@@ -4,14 +4,13 @@
 Resumes the attendee's warehouse and returns the redirect URL to the entry notebook.
 """
 import os
-import subprocess
 import sys
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "dbacademy", "-q"])
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import _dbacademy_vs_patch  # noqa: F401  applies SDK name-sanitization
 
+sys.path.insert(0, "/voc/scripts/python")
 from dbacademy import voc_init
 
 user = os.getenv("VOC_USER_EMAIL", "unknown@example.com")

@@ -4,11 +4,10 @@
 Stops the attendee's warehouse to save costs. Notebooks remain in their workspace.
 """
 import os
-import subprocess
 import sys
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "dbacademy", "-q"])
 
+sys.path.insert(0, "/voc/scripts/python")
 from dbacademy import voc_init
 
 user = os.getenv("VOC_USER_EMAIL", "unknown@example.com")

@@ -8,16 +8,15 @@ Sets up:
 4. Permissions for all attendees
 """
 import os
-import subprocess
 import sys
 import zipfile
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "dbacademy", "-q"])
 
 sys.path.insert(0, os.path.dirname(__file__))
 
 import _dbacademy_vs_patch  # noqa: F401  applies SDK name-sanitization
 
+sys.path.insert(0, "/voc/scripts/python")
 from dbacademy import voc_init
 
 print("=" * 60)
