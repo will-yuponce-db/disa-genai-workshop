@@ -1,53 +1,38 @@
-# Module 6 — App embed + live vibe-code
+# Module 6 — Spin up an app + vibe-code
 
 **Time**: 25 minutes
 
-## What we'll demo
+The repo no longer ships an app source tree. Pick any stock Databricks Apps template (Streamlit chat is the easiest), then vibe-code on top.
 
-1. **The app**: a Databricks App with React + Vite, an embedded chat to `disa-cti-agent`, and a `/charts` page that's empty at the start.
-2. **Live vibe-code**:
-   - Ask Genie: *"top 10 vendors by KEV catalog count"*.
-   - Click **View SQL**. Copy SQL + schema.
-   - Open `prompts/vibe_code_component.md`. Paste into the prompt template. Send to Claude.
-   - Save the returned `.tsx` to `app/src/pages/KevByVendorChart.tsx`.
-   - Add `<Route path="/charts/kev-by-vendor" element={<KevByVendorChart />} />` to `App.tsx`.
-   - The chart appears in the running dev server.
+## Steps
 
-## Deployment
+1. Sidebar → **Apps** → **Create app**.
+2. Pick the **Streamlit chat** template (or any starter — Dash, Gradio, FastAPI all work).
+3. Name it `disa-cti-<your-suffix>`.
+4. Add a **serving-endpoint** resource pointing at your per-user agent endpoint from Module 5 (alias `agent-endpoint`).
+5. Add a **SQL warehouse** resource pointing at the workspace's serverless warehouse (alias `sql-warehouse`).
+6. Set env vars:
+    - `DATABRICKS_AGENT_ENDPOINT = disa-cti-agent-<user>`
+    - `DATABRICKS_CATALOG = <your-catalog>`
+    - `DATABRICKS_SCHEMA = cti_<user>`
+7. Click **Deploy**.
 
-`notebooks/06_deploy_app.ipynb` collapses the four-shell-command deploy into a single notebook run. It:
+`notebooks/06_deploy_app.ipynb` prints all of these per-user values for copy-paste.
 
-1. Reads `warehouse_id` from `_workshop_config` so `app.yaml` always points at the live warehouse.
-2. Builds `app/dist/` if it isn't already committed.
-3. Patches a copy of `app.yaml` in `/tmp` with the live warehouse id (the repo's `app.yaml` keeps a default for local development).
-4. Syncs the staged app to `/Workspace/Users/<you>/disa-genai-workshop-app`.
-5. Calls `databricks apps create disa-cti` (idempotent — tolerates "already exists").
-6. Calls `databricks apps deploy disa-cti --source-code-path /Workspace/Users/<you>/disa-genai-workshop-app`.
-7. Prints the live URL.
+## Live vibe-code
 
-App provisioning + first deploy typically takes 5-10 minutes (workspace pulls Node.js dependencies and starts the Express server).
+Once the templated app is running:
 
-## What the notebook leaves to the UI
+1. Ask Genie a question — e.g. *"top 10 vendors by KEV catalog count"*.
+2. Click **View SQL** in Genie. Copy SQL + result-schema columns.
+3. Open `prompts/vibe_code_component.md`. Paste SQL + schema into the prompt template.
+4. Send to Claude. It returns a snippet for the framework you picked.
+5. Paste it into the template's main file. Redeploy. Refresh.
 
-- **Sidebar → Apps → disa-cti** — confirm `app_status: AVAILABLE` and `compute_status: ACTIVE`. Click the URL to open.
-- **Logs panel** — useful when a deploy fails (look for `npm ERR!` or "endpoint not found" if the agent isn't ready).
+Total time per added chart: about a minute.
 
-The vibe-code workflow itself is interactive by design: the attendee writes a Genie question, copies the generated SQL into the take-home prompt, and pastes the resulting React file back into the app. This is the workshop's payoff and isn't automatable.
+## Why this module is shorter than it looks
 
-## Why this is the workshop's punch line
-
-Two minutes of work — paste, prompt, save, refresh — turns into a working analyst tool. The pattern generalizes: any Genie question becomes a polished UI in the time it takes to explain what you wanted.
-
-The take-home prompt is in [`prompts/vibe_code_component.md`](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/prompts/vibe_code_component.md). See the [Vibe-code prompt](../vibe-code.md) page for the prompt copy and a worked example.
-
-## Architecture recap
-
-```
-React (Tailwind, Recharts)  ←  Genie SQL via prompt template  ←  Genie space
-       │
-       ▼
-/api/sql  →  warehouse  →  rendered chart
-/api/agent/step  →  disa-cti-agent  →  Genie + KA + Fetch + parse_pdf
-```
+The whole point is the speed. The template gives you a chat box wired to your agent in two clicks; the vibe-code prompt turns Genie SQL into a working chart in a minute. The interesting work is the agent (Module 5) and the data behind it (00, 01, 03, 04, 5b).
 
 [Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/06_deploy_app.ipynb)

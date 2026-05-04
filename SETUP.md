@@ -63,7 +63,7 @@ done
 | `03_genie_setup` | Creates per-user Genie space `DISA Threat Intel (<user>)` via REST | ~1 min |
 | `04_knowledge_assistant` | Creates per-user KA `disa-cti-knowledge-<user>` via REST; KA endpoint warms up async (~10-20 min) | ~1 min |
 | `05_compound_agent` | Logs + registers + deploys per-user agent endpoint `disa-cti-agent-<user>` | ~3 min log/register, ~10-15 min endpoint provision |
-| `06_deploy_app` | Patches `app.yaml`, syncs source to workspace, creates+deploys per-user App `disa-cti-<user>` | ~5-10 min |
+| `06_deploy_app` | Prints the per-user values to plug into a Databricks Apps template (Streamlit chat). No source code in the repo — instructor picks the template in the UI. | ~5-10 min |
 
 The notebooks are idempotent. Re-running 03/04 reuses an existing space/KA by display name. Re-running 05 logs a new model version and updates the endpoint. Re-running 06 deploys a new revision.
 

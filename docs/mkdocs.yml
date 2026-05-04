@@ -31,7 +31,6 @@ theme:
 
 nav:
   - Home: index.md
-  - Architecture: architecture.md
   - Modules:
       - 0 — Setup: modules/00-setup.md
       - 1 — Document ingest: modules/01-ingest.md
