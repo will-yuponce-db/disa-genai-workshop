@@ -14,7 +14,7 @@ That's it. The notebook does the rest.
 
 | Step | Output |
 |---|---|
-| Catalog + schema + volumes | `saf_aq_demo_catalog.disa_threat_intel`, plus `raw_advisories`, `raw_stigs`, `ka_corpus` volumes |
+| Catalog + schema + volumes | `main.cti_<user>`, plus `raw_advisories`, `raw_stigs`, `ka_corpus` volumes |
 | CISA KEV catalog | `kev_catalog` table (~1,587 rows) |
 | NVD 2.0 REST API pull | `cves` table (~32k CVEs from the last 6 months) |
 | MITRE ATT&CK STIX bundle | `attack_techniques` (~858) and `attack_groups` (~189) |
@@ -27,7 +27,7 @@ The notebook is idempotent. Re-running it overwrites the data tables and is safe
 
 ## Catalog and schema choice
 
-The notebooks default to `saf_aq_demo_catalog.disa_threat_intel`. If you do not have `CREATE SCHEMA` on that catalog, change the catalog name in `00_setup` (and the same string appears in 01–06; a global find-and-replace works) before running.
+The notebooks default to `main.cti_<user>`. If you do not have `CREATE SCHEMA` on that catalog, change the catalog name in `00_setup` (and the same string appears in 01–06; a global find-and-replace works) before running.
 
 ## One-time UI prerequisites
 
@@ -42,4 +42,4 @@ These are workspace settings, not anything an attendee touches mid-workshop. Set
 | Foundation model endpoints | Compute → Serving | Confirm `databricks-claude-haiku-4-5`, `databricks-claude-sonnet-4-6`, and `databricks-gte-large-en` are reachable. |
 | Serverless SQL warehouse | SQL → Warehouses | Required for Genie + the app. |
 
-[Open the notebook on GitHub →](https://github.com/your-handle/disa-genai-workshop/blob/main/notebooks/00_setup.ipynb)
+[Open the notebook on GitHub →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/00_setup.ipynb)

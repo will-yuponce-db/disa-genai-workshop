@@ -30,4 +30,4 @@ If you want to demo any of the above in front of an audience: open the AI Playgr
 
 The Playground (or this notebook) is where prompt engineering happens. Once a prompt works, it's a one-line change to deploy it as an `ai_query` in SQL or a model-serving call in your agent (Module 5).
 
-[Open the notebook →](https://github.com/your-handle/disa-genai-workshop/blob/main/notebooks/02_ai_playground.ipynb)
+[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/02_ai_playground.ipynb)

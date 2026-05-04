@@ -18,7 +18,7 @@ One agent, four tools, deployed to Model Serving as `disa-cti-agent`.
 1. **Cell 2 (widgets)** reads `genie_space_id`, `ka_endpoint`, and `llm_endpoint` defaults from `_workshop_config`. Attendees never paste an id.
 2. **Cell 4 (agent.py)** writes a self-contained agent module to `/tmp/disa_agent/agent.py`. It uses `mlflow.pyfunc.ResponsesAgent` and routes tool calls through `WorkspaceClient.api_client.do(...)` so it works under all auth modes (PAT, OAuth user, M2M).
 3. **Cell 6 (smoke test)** instantiates the agent locally and asks it to list its tools without calling any.
-4. **Cell 8 (log + register)** logs the model to `mlflow` and registers it to UC at `saf_aq_demo_catalog.disa_threat_intel.disa_cti_agent`.
+4. **Cell 8 (log + register)** logs the model to `mlflow` and registers it to UC at `main.cti_<user>.disa_cti_agent`.
 5. **Cell 10 (deploy)** calls `databricks.agents.deploy(...)` to push the registered model version to a serving endpoint named `disa-cti-agent`.
 
 The agent endpoint takes ~10-15 min to provision the first time. Re-deploys after that are minutes.
@@ -48,4 +48,4 @@ Nothing required. Optional things to look at after deploy:
 - **Sidebar → Compute → Serving → disa-cti-agent** — watch the deployment status; click **Logs** to debug if the smoke test fails.
 - **Mlflow tracing** — every call leaves a trace under the agent's experiment. Useful for showing tool-routing decisions to the audience.
 
-[Open the notebook →](https://github.com/your-handle/disa-genai-workshop/blob/main/notebooks/05_compound_agent.ipynb)
+[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/05_compound_agent.ipynb)

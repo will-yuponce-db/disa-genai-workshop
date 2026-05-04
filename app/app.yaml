@@ -19,14 +19,16 @@ env:
     valueFrom: "sql-warehouse"
   - name: DATABRICKS_WAREHOUSE_ID
     valueFrom: "sql-warehouse"
+  # CATALOG / SCHEMA / AGENT_ENDPOINT defaults — overwritten at deploy time
+  # by notebook 06_deploy_app.ipynb with the per-user values from _workshop_config.
   - name: DATABRICKS_CATALOG
-    value: "saf_aq_demo_catalog"
+    value: "main"
   - name: DATABRICKS_SCHEMA
-    value: "disa_threat_intel"
+    value: "cti_default"
 
   # Compound agent endpoint
   - name: DATABRICKS_AGENT_ENDPOINT
-    value: "disa-cti-agent"
+    value: "disa-cti-agent-default"
   - name: DATABRICKS_AGENT_MAX_ACTIONS
     value: "5"
 
@@ -38,5 +40,5 @@ resources:
 
   serving_endpoint:
     - name: agent-endpoint
-      endpoint_name: "disa-cti-agent"
+      endpoint_name: "disa-cti-agent-default"  # overwritten at deploy time
       permission: CAN_QUERY

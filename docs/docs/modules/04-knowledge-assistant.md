@@ -14,7 +14,7 @@ A knowledge graph is the right answer for relationship-heavy queries (*"who is c
 
 ## What the notebook does
 
-1. Stages the corpus at `/Volumes/saf_aq_demo_catalog/disa_threat_intel/ka_corpus`:
+1. Stages the corpus at `/Volumes/main/cti_<user>/ka_corpus`:
    - All advisory PDFs from `raw_advisories/`
    - All STIG snippet text files from `raw_stigs/`
    - The first 50 ATT&CK techniques as `attack_<id>.txt`
@@ -61,4 +61,4 @@ When citing an ATT&CK technique, include the technique ID (e.g., T1059.001).
 4. What ATT&CK technique covers PowerShell-based execution?
 5. Are there advisories specifically calling out Cisco IOS XE?
 
-[Open the notebook →](https://github.com/your-handle/disa-genai-workshop/blob/main/notebooks/04_knowledge_assistant.ipynb)
+[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/04_knowledge_assistant.ipynb)

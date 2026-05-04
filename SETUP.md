@@ -20,7 +20,7 @@ Set these once per workspace before the workshop. Without them, the notebooks ca
 
 ## 2. Pick the shared catalog (one-time)
 
-Every attendee writes into one shared catalog. Default: `saf_aq_demo_catalog`. To change it, edit the single `CATALOG = "..."` line in [`notebooks/_config.ipynb`](notebooks/_config.ipynb).
+Every attendee writes into one shared catalog. Default: `main`. To change it, edit the single `CATALOG = "..."` line in [`notebooks/_config.ipynb`](notebooks/_config.ipynb).
 
 The catalog must allow `account users` (or whichever group attendees belong to) to:
 
@@ -30,7 +30,7 @@ The catalog must allow `account users` (or whichever group attendees belong to) 
 - `SELECT`, `READ VOLUME`
 
 ```sql
-GRANT USE_CATALOG, CREATE_SCHEMA ON CATALOG saf_aq_demo_catalog TO `account users`;
+GRANT USE_CATALOG, CREATE_SCHEMA ON CATALOG main TO `account users`;
 ```
 
 Each attendee's per-user schema is named `cti_<sanitized-username>` (derived in `_config.ipynb`), so two attendees with usernames `alice@…` and `bob@…` get `cti_alice` and `cti_bob` schemas inside the same catalog.

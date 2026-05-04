@@ -10,8 +10,8 @@
                           ▼                   ▼
             ┌─────────────────────────┐   ┌────────────────────────┐
             │ Unity Catalog            │   │  disa-cti-agent          │
-            │ saf_aq_demo_catalog      │   │  (ResponsesAgent)        │
-            │ .disa_threat_intel       │   └──────┬─────────────────┘
+            │ main      │   │  (ResponsesAgent)        │
+            │ .cti_<user>              │   └──────┬─────────────────┘
             │ - kev_catalog            │          │ tool calls
             │ - cves                   │   ┌──────┴───────┬──────────┬──────────────┐
             │ - attack_techniques      │   ▼              ▼          ▼              ▼
@@ -32,8 +32,8 @@
 
 ### Unity Catalog
 
-- **Catalog**: `saf_aq_demo_catalog`
-- **Schema**: `disa_threat_intel`
+- **Catalog**: `main`
+- **Schema**: `cti_<user>` (per attendee)
 - **Tables**: `kev_catalog`, `cves`, `attack_techniques`, `attack_groups`, `affected_assets`, `parsed_advisories`, `structured_advisories`, `advisories` (view), `_workshop_config`
 - **Volumes**: `raw_advisories` (PDFs), `raw_stigs` (XCCDF text snippets), `ka_corpus` (combined KA source)
 

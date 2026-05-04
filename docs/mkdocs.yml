@@ -1,7 +1,7 @@
 site_name: DISA GenAI Workshop
 site_description: A 2.5-hour Databricks GenAI workshop for cyber threat intelligence, hosted on Vocareum.
-site_url: https://your-handle.github.io/disa-genai-workshop/
-repo_url: https://github.com/your-handle/disa-genai-workshop
+site_url: https://will-yuponce-db.github.io/disa-genai-workshop/
+repo_url: https://github.com/will-yuponce-db/disa-genai-workshop
 repo_name: disa-genai-workshop
 edit_uri: edit/main/docs/docs/
 

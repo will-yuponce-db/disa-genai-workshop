@@ -65,4 +65,4 @@ Always cite CVE IDs and date ranges in your answer.
 
 Pick one of the sample questions, ask Genie, click **View SQL**, copy the SQL + the result schema. You'll use them in [Module 6](06-app.md).
 
-[Open the notebook →](https://github.com/your-handle/disa-genai-workshop/blob/main/notebooks/03_genie_setup.ipynb)
+[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/03_genie_setup.ipynb)

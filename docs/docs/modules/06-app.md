@@ -38,7 +38,7 @@ The vibe-code workflow itself is interactive by design: the attendee writes a Ge
 
 Two minutes of work — paste, prompt, save, refresh — turns into a working analyst tool. The pattern generalizes: any Genie question becomes a polished UI in the time it takes to explain what you wanted.
 
-The take-home prompt is in [`prompts/vibe_code_component.md`](https://github.com/your-handle/disa-genai-workshop/blob/main/prompts/vibe_code_component.md). See the [Vibe-code prompt](../vibe-code.md) page for the prompt copy and a worked example.
+The take-home prompt is in [`prompts/vibe_code_component.md`](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/prompts/vibe_code_component.md). See the [Vibe-code prompt](../vibe-code.md) page for the prompt copy and a worked example.
 
 ## Architecture recap
 
@@ -50,4 +50,4 @@ React (Tailwind, Recharts)  ←  Genie SQL via prompt template  ←  Genie space
 /api/agent/step  →  disa-cti-agent  →  Genie + KA + Fetch + parse_pdf
 ```
 
-[Open the notebook →](https://github.com/your-handle/disa-genai-workshop/blob/main/notebooks/06_deploy_app.ipynb)
+[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/06_deploy_app.ipynb)

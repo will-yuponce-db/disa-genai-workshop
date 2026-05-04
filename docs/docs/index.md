@@ -16,7 +16,7 @@ The workshop closes with a **live vibe-code demo**: paste a Genie-generated SQL 
 
 ## How the notebooks chain
 
-Every module is a runnable notebook. Each one writes its outputs (Genie space id, KA endpoint, warehouse id, etc.) into a shared Delta table — `saf_aq_demo_catalog.disa_threat_intel._workshop_config` — that downstream notebooks read on startup. The attendee never copies an ID from one notebook to another, and never has to leave the notebook for the Databricks UI.
+Every module is a runnable notebook. Each one writes its outputs (Genie space id, KA endpoint, warehouse id, etc.) into a shared Delta table — `main.cti_<user>._workshop_config` — that downstream notebooks read on startup. The attendee never copies an ID from one notebook to another, and never has to leave the notebook for the Databricks UI.
 
 ```
 00_setup ─┐

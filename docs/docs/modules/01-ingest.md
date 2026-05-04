@@ -4,7 +4,7 @@
 
 ## What you'll do
 
-Starting from the CISA advisory PDFs that `00_setup` landed in `/Volumes/saf_aq_demo_catalog/disa_threat_intel/raw_advisories`, end with a structured Delta table of CVEs, affected products, and recommended mitigations. Two SQL calls.
+Starting from the CISA advisory PDFs that `00_setup` landed in `/Volumes/main/cti_<user>/raw_advisories`, end with a structured Delta table of CVEs, affected products, and recommended mitigations. Two SQL calls.
 
 ## Why this matters for DISA
 
@@ -28,12 +28,12 @@ high-priority advisories citing actively-exploited CVEs
 
 ```sql
 -- Parse PDFs in the volume
-CREATE OR REPLACE TABLE saf_aq_demo_catalog.disa_threat_intel.parsed_advisories AS
+CREATE OR REPLACE TABLE main.cti_<user>.parsed_advisories AS
 SELECT path, ai_parse_document(content) AS parsed
-FROM READ_FILES('/Volumes/saf_aq_demo_catalog/disa_threat_intel/raw_advisories', format => 'binaryFile');
+FROM READ_FILES('/Volumes/main/cti_<user>/raw_advisories', format => 'binaryFile');
 
 -- Extract structured fields
-CREATE OR REPLACE TABLE saf_aq_demo_catalog.disa_threat_intel.structured_advisories AS
+CREATE OR REPLACE TABLE main.cti_<user>.structured_advisories AS
 SELECT
   path,
   ai_query(
@@ -41,7 +41,7 @@ SELECT
     CONCAT('Extract structured threat intel from this advisory ...', LEFT(CAST(parsed AS STRING), 8000)),
     responseFormat => '{...}'
   ) AS extract
-FROM saf_aq_demo_catalog.disa_threat_intel.parsed_advisories;
+FROM main.cti_<user>.parsed_advisories;
 ```
 
 The notebook uses Claude Haiku 4.5 by default. Haiku is fast and cheap and reliable for structured extraction at this scale; in Module 2 we compare against Sonnet 4.6 side-by-side.
@@ -52,4 +52,4 @@ The notebook uses Claude Haiku 4.5 by default. Haiku is fast and cheap and relia
 2. Swap `databricks-claude-haiku-4-5` for `databricks-claude-sonnet-4-6` and compare structured output quality.
 3. Use `ai_summarize` to produce a 2-sentence daily-brief across all advisories.
 
-[Open the notebook →](https://github.com/your-handle/disa-genai-workshop/blob/main/notebooks/01_ingest_advisories.ipynb)
+[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/01_ingest_advisories.ipynb)

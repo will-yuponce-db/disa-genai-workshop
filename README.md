@@ -24,7 +24,7 @@ A new CISA advisory drops.
 
 ## Modules
 
-Every module is a runnable notebook. Each one writes its outputs (Genie space id, KA endpoint, warehouse id, etc.) into a shared Delta table — `saf_aq_demo_catalog.disa_threat_intel._workshop_config` — that downstream notebooks read on startup. Attendees never copy an id from one notebook to another, and never have to leave the notebook for the Databricks UI mid-workshop.
+Every module is a runnable notebook. Each one writes its outputs (Genie space id, KA endpoint, warehouse id, etc.) into a shared Delta table — `main.cti_<user>._workshop_config` — that downstream notebooks read on startup. Attendees never copy an id from one notebook to another, and never have to leave the notebook for the Databricks UI mid-workshop.
 
 | # | Module | Time | Notebook |
 |---|---|---|---|
@@ -66,7 +66,7 @@ disa-genai-workshop/
 
 - A Databricks workspace with **Mosaic AI**, **Agent Bricks**, **Genie**, **Vector Search**, and **AI Functions** enabled
 - A serverless SQL warehouse
-- A Unity Catalog catalog you have `CREATE SCHEMA` on (default: `saf_aq_demo_catalog`; see `SETUP.md` to change)
+- A Unity Catalog catalog you have `CREATE SCHEMA` on (default: `main`; see `SETUP.md` to change)
 - `databricks` CLI configured with a profile
 
 For Vocareum-hosted runs, none of the above is needed by attendees — see [SETUP.md](SETUP.md).
@@ -92,13 +92,13 @@ Each notebook reads upstream artifacts from `_workshop_config`, so you can run t
 
 ## Catalog and schema
 
-The notebooks default to writing into `saf_aq_demo_catalog.disa_threat_intel`. If you don't have CREATE rights on that catalog, change the catalog name in 00 (and the same string appears in 01-06; a global find-and-replace works) before running. The schema name `disa_threat_intel` and the volume names (`raw_advisories`, `raw_stigs`, `ka_corpus`) can stay.
+The notebooks default to writing into `main.cti_<user>`. If you don't have CREATE rights on that catalog, change the catalog name in 00 (and the same string appears in 01-06; a global find-and-replace works) before running. Each attendee gets their own schema `cti_<sanitized-username>` (derived in `_config.ipynb`).
 
 You'll also need `CREATE SCHEMA`, `CREATE TABLE`, `CREATE VOLUME`, and `CREATE FUNCTION` on the catalog you choose.
 
 ## Docs site
 
-Live docs: `https://<your-handle>.github.io/disa-genai-workshop/`
+Live docs: `https://<will-yuponce-db>.github.io/disa-genai-workshop/`
 
 Build locally:
 
