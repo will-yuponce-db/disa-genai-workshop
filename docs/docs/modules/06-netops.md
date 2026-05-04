@@ -1,4 +1,4 @@
-# Module 5b — NetOps log analysis with `ai_query` (bulk inference)
+# Module 6 — NetOps log analysis with `ai_query` (bulk inference)
 
 **Time**: 20 minutes
 
@@ -36,7 +36,7 @@ Source: the [`outages@outages.org` mailing list archive](https://puck.nether.net
 
 00 → 01 → 02 → 03 → 04 → 05 → **5b** → 06.
 
-Module 5's compound agent picks up the netops table automatically through `_workshop_config`, so re-deploying the agent after running 5b gives it real outage data to query. Skipping 5b is fine — the agent's other four tools still work.
+Module 5's compound agent picks up the netops table automatically through `_workshop_config`, so re-deploying the agent after running module 6 gives it real outage data to query. Skipping module 6 is fine — the agent's other four tools still work.
 
 ## Sample output (validated dry run)
 
@@ -58,4 +58,4 @@ Module 5's compound agent picks up the netops table automatically through `_work
 
 Same shape every time: one prompt, one JSON schema, applied to a column.
 
-[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/05b_netops_ai_query.ipynb)
+[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/06_netops_ai_query.ipynb)

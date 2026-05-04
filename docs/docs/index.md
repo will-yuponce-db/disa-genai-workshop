@@ -21,7 +21,7 @@ Every module is a runnable notebook. Each one writes its outputs (Genie space id
 ```
 00_setup ─┐
 01_ingest │
-02_play   ├── all read & write _workshop_config ──→ 06_deploy_app
+02_play   ├── all read & write _workshop_config ──→ 07_deploy_app
 03_genie  │
 04_ka     │
 05_agent ─┘
@@ -37,8 +37,8 @@ Every module is a runnable notebook. Each one writes its outputs (Genie space id
 | [3](modules/03-genie.md) | Genie space over CVE / KEV / STIG | 25m |
 | [4](modules/04-knowledge-assistant.md) | Knowledge Assistant (Agent Bricks) | 20m |
 | [5](modules/05-compound-agent.md) | Compound agent | 30m |
-| [5b](modules/05b-netops.md) | NetOps log analysis with `ai_query` (bulk inference over real outage reports) | 20m |
-| [6](modules/06-app.md) | App embed (stock Apps template) | 25m |
+| [6](modules/06-netops.md) | NetOps log analysis with `ai_query` (bulk inference over real outage reports) | 20m |
+| [7](modules/07-app.md) | App embed (stock Apps template) | 25m |
 
 ## Public datasets
 

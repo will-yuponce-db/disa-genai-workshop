@@ -1,4 +1,4 @@
-# Module 6 — Spin up an app
+# Module 7 — Spin up an app
 
 **Time**: 25 minutes
 
@@ -17,7 +17,7 @@ The repo no longer ships an app source tree. Pick any stock Databricks Apps temp
     - `DATABRICKS_SCHEMA = cti_<user>`
 7. Click **Deploy**.
 
-`notebooks/06_deploy_app.ipynb` prints all of these per-user values for copy-paste.
+`notebooks/07_deploy_app.ipynb` prints all of these per-user values for copy-paste.
 
 ## Extending the template ad-hoc with Genie
 
@@ -30,4 +30,4 @@ Once the templated app is running, you can extend it without writing the boilerp
 
 Total time per added chart: about a minute.
 
-[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/06_deploy_app.ipynb)
+[Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/07_deploy_app.ipynb)

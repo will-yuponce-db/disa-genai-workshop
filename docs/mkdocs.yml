@@ -38,8 +38,8 @@ nav:
       - 3 — Genie: modules/03-genie.md
       - 4 — Knowledge Assistant: modules/04-knowledge-assistant.md
       - 5 — Compound agent: modules/05-compound-agent.md
-      - 5b — NetOps log analysis (ai_query bulk): modules/05b-netops.md
-      - 6 — App + vibe-code: modules/06-app.md
+      - 6 — NetOps log analysis (ai_query bulk): modules/06-netops.md
+      - 7 — App embed: modules/07-app.md
 
 markdown_extensions:
   - admonition

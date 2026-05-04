@@ -46,7 +46,7 @@ databricks workspace import-dir notebooks \
 Then submit each as a one-off job (or open in the workspace UI and click Run All):
 
 ```bash
-for nb in 00_setup 01_ingest_advisories 02_ai_playground 03_genie_setup 04_knowledge_assistant 05_compound_agent 06_deploy_app; do
+for nb in 00_setup 01_ingest_advisories 02_ai_playground 03_genie_setup 04_knowledge_assistant 05_compound_agent 07_deploy_app; do
   cat > /tmp/run_${nb}.json <<EOF
 {"run_name":"disa_${nb}","tasks":[{"task_key":"r","notebook_task":{"notebook_path":"/Workspace/Users/${USER}@databricks.com/disa-genai-workshop/notebooks/${nb}"}}]}
 EOF
@@ -63,7 +63,7 @@ done
 | `03_genie_setup` | Creates per-user Genie space `DISA Threat Intel (<user>)` via REST | ~1 min |
 | `04_knowledge_assistant` | Creates per-user KA `disa-cti-knowledge-<user>` via REST; KA endpoint warms up async (~10-20 min) | ~1 min |
 | `05_compound_agent` | Logs + registers + deploys per-user agent endpoint `disa-cti-agent-<user>` | ~3 min log/register, ~10-15 min endpoint provision |
-| `06_deploy_app` | Prints the per-user values to plug into a Databricks Apps template (Streamlit chat). No source code in the repo — instructor picks the template in the UI. | ~5-10 min |
+| `07_deploy_app` | Prints the per-user values to plug into a Databricks Apps template (Streamlit chat). No source code in the repo — instructor picks the template in the UI. | ~5-10 min |
 
 The notebooks are idempotent. Re-running 03/04 reuses an existing space/KA by display name. Re-running 05 logs a new model version and updates the endpoint. Re-running 06 deploys a new revision.
 

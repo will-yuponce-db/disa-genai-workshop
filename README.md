@@ -34,8 +34,8 @@ Every module is a runnable notebook. Each one writes its outputs (Genie space id
 | 3 | Genie space over CVE / KEV / STIG | 25m | `notebooks/03_genie_setup.ipynb` |
 | 4 | Knowledge Assistant (Agent Bricks) | 20m | `notebooks/04_knowledge_assistant.ipynb` |
 | 5 | Compound agent | 30m | `notebooks/05_compound_agent.ipynb` |
-| 5b | NetOps log analysis with `ai_query` (bulk inference over real outage reports) | 20m | `notebooks/05b_netops_ai_query.ipynb` |
-| 6 | App embed (stock Apps template) | 25m | `notebooks/06_deploy_app.ipynb` |
+| 6 | NetOps log analysis with `ai_query` (bulk inference over real outage reports) | 20m | `notebooks/06_netops_ai_query.ipynb` |
+| 7 | App embed (stock Apps template) | 25m | `notebooks/07_deploy_app.ipynb` |
 
 ## Public datasets
 
@@ -55,7 +55,7 @@ The legacy NVD JSON 1.1 feeds (`nvd.nist.gov/feeds/json/cve/1.1/...`) are deprec
 
 ```
 disa-genai-workshop/
-  notebooks/         # 7 hands-on notebooks (00-06)
+  notebooks/         # 8 hands-on notebooks (00-07, plus the optional 01b DLT path)
   data/              # seed SQL fixtures (advisories/STIGs/etc. are downloaded by 00_setup)
   vocareum/          # lifecycle scripts for the Vocareum lab platform
   docs/              # MkDocs Material site (auto-deployed to GH Pages)
@@ -79,7 +79,7 @@ The list of one-time UI clicks (Agent Bricks workspace toggle, etc.) is in [SETU
 databricks workspace import-dir notebooks /Workspace/Users/${USER}@databricks.com/disa-genai-workshop/notebooks --overwrite --profile <your-profile>
 
 # 2. Run notebooks in order via the workspace UI, or as one-off serverless jobs:
-for nb in 00_setup 01_ingest_advisories 02_ai_playground 03_genie_setup 04_knowledge_assistant 05_compound_agent 06_deploy_app; do
+for nb in 00_setup 01_ingest_advisories 02_ai_playground 03_genie_setup 04_knowledge_assistant 05_compound_agent 06_netops_ai_query 07_deploy_app; do
   cat > /tmp/run_${nb}.json <<EOF
   {"run_name":"disa_${nb}","tasks":[{"task_key":"r","notebook_task":{"notebook_path":"/Workspace/Users/${USER}@databricks.com/disa-genai-workshop/notebooks/${nb}"}}]}
 EOF
@@ -87,7 +87,7 @@ EOF
 done
 ```
 
-Each notebook reads upstream artifacts from `_workshop_config`, so you can run them in any order as long as 00 has run first; 03/04 must run before 05; 05 must run before 06.
+Each notebook reads upstream artifacts from `_workshop_config`, so you can run them in any order as long as 00 has run first; 03 and 04 must run before 05; 06 (NetOps) is independent and can run any time after 00; 07 (app) needs 05 deployed.
 
 ## Catalog and schema
 
