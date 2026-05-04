@@ -1,8 +1,8 @@
-# Module 6 — Spin up an app + vibe-code
+# Module 6 — Spin up an app
 
 **Time**: 25 minutes
 
-The repo no longer ships an app source tree. Pick any stock Databricks Apps template (Streamlit chat is the easiest), then vibe-code on top.
+The repo no longer ships an app source tree. Pick any stock Databricks Apps template (Streamlit chat is the easiest), wire it to your per-user agent endpoint, deploy.
 
 ## Steps
 
@@ -19,20 +19,15 @@ The repo no longer ships an app source tree. Pick any stock Databricks Apps temp
 
 `notebooks/06_deploy_app.ipynb` prints all of these per-user values for copy-paste.
 
-## Live vibe-code
+## Extending the template ad-hoc with Genie
 
-Once the templated app is running:
+Once the templated app is running, you can extend it without writing the boilerplate:
 
 1. Ask Genie a question — e.g. *"top 10 vendors by KEV catalog count"*.
 2. Click **View SQL** in Genie. Copy SQL + result-schema columns.
-3. Open `prompts/vibe_code_component.md`. Paste SQL + schema into the prompt template.
-4. Send to Claude. It returns a snippet for the framework you picked.
-5. Paste it into the template's main file. Redeploy. Refresh.
+3. Paste both into Claude with a prompt like *"give me a Streamlit snippet that calls this SQL via WorkspaceClient.statement_execution and renders it as a bar chart"*.
+4. Paste the snippet into the template's main file. Redeploy. Refresh.
 
 Total time per added chart: about a minute.
-
-## Why this module is shorter than it looks
-
-The whole point is the speed. The template gives you a chat box wired to your agent in two clicks; the vibe-code prompt turns Genie SQL into a working chart in a minute. The interesting work is the agent (Module 5) and the data behind it (00, 01, 03, 04, 5b).
 
 [Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/06_deploy_app.ipynb)

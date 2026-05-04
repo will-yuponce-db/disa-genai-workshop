@@ -8,7 +8,7 @@ A 2.5 hour, hands-on Databricks workshop for cyber threat intelligence and vulne
 
 A compound AI agent for **cyber threat intelligence**. By the end of the workshop, you can ask a single natural-language question — *"A new CISA advisory just dropped at this URL. Find related KEV entries, tell me which STIG controls apply, and summarize the operational impact"* — and the agent will fetch the advisory, parse it, query CVE/KEV/STIG tables, ground its answer in DoD documentation, and respond in seconds.
 
-The workshop closes with a **live vibe-code demo**: spin up a stock Databricks Apps template (Streamlit chat works), then paste a Genie-generated SQL query into Claude using a templated prompt and watch a working chart appear in the running app.
+The workshop closes with a stock Databricks Apps template (Streamlit chat works) wired up to the agent endpoint. The instructor can extend it ad-hoc by asking Genie a question and pasting the resulting SQL into Claude.
 
 ## Story
 
@@ -19,7 +19,7 @@ A new CISA advisory drops.
   -> Find the STIG controls that mitigate the threat (Knowledge Assistant)
   -> Pull live updates from cisa.gov (Fetch / requests)
   -> Compound agent ties it all together
-  -> Embedded in a Databricks App you can extend with vibe-coded components
+  -> Wired into a stock Databricks Apps template (Streamlit chat)
 ```
 
 ## Modules
@@ -35,7 +35,7 @@ Every module is a runnable notebook. Each one writes its outputs (Genie space id
 | 4 | Knowledge Assistant (Agent Bricks) | 20m | `notebooks/04_knowledge_assistant.ipynb` |
 | 5 | Compound agent | 30m | `notebooks/05_compound_agent.ipynb` |
 | 5b | NetOps log analysis with `ai_query` (bulk inference over real outage reports) | 20m | `notebooks/05b_netops_ai_query.ipynb` |
-| 6 | App embed + live vibe-code | 25m | `notebooks/06_deploy_app.ipynb` (Apps template + `prompts/vibe_code_component.md`) |
+| 6 | App embed (stock Apps template) | 25m | `notebooks/06_deploy_app.ipynb` |
 
 ## Public datasets
 
@@ -57,7 +57,6 @@ The legacy NVD JSON 1.1 feeds (`nvd.nist.gov/feeds/json/cve/1.1/...`) are deprec
 disa-genai-workshop/
   notebooks/         # 7 hands-on notebooks (00-06)
   data/              # seed SQL fixtures (advisories/STIGs/etc. are downloaded by 00_setup)
-  prompts/           # take-home vibe-code prompt
   vocareum/          # lifecycle scripts for the Vocareum lab platform
   docs/              # MkDocs Material site (auto-deployed to GH Pages)
 ```

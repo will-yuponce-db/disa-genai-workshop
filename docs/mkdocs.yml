@@ -40,7 +40,6 @@ nav:
       - 5 — Compound agent: modules/05-compound-agent.md
       - 5b — NetOps log analysis (ai_query bulk): modules/05b-netops.md
       - 6 — App + vibe-code: modules/06-app.md
-  - Vibe-code prompt: vibe-code.md
 
 markdown_extensions:
   - admonition

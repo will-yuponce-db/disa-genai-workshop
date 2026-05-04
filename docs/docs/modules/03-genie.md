@@ -61,8 +61,5 @@ Always cite CVE IDs and date ranges in your answer.
 9. Which assets haven't been patched in 60+ days?
 10. Median CVSS of KEV-listed CVEs?
 
-## Vibe-code prep
-
-Pick one of the sample questions, ask Genie, click **View SQL**, copy the SQL + the result schema. You'll use them in [Module 6](06-app.md).
 
 [Open the notebook →](https://github.com/will-yuponce-db/disa-genai-workshop/blob/main/notebooks/03_genie_setup.ipynb)

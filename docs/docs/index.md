@@ -12,7 +12,7 @@ By the end of the workshop you will have built and deployed a **compound AI agen
 
 It does this by orchestrating four tools — Genie, a Knowledge Assistant, a Fetch tool for live web pulls, and `ai_parse_document` — behind a single chat interface in a Databricks App.
 
-The workshop closes with a **live vibe-code demo**: paste a Genie-generated SQL query into Claude using a templated prompt and watch a working React chart appear in the deployed app.
+The workshop closes with a stock Databricks Apps template (Streamlit chat) wired to the agent endpoint. Extend it ad-hoc by asking Genie a question and pasting the resulting SQL into Claude.
 
 ## How the notebooks chain
 
@@ -38,7 +38,7 @@ Every module is a runnable notebook. Each one writes its outputs (Genie space id
 | [4](modules/04-knowledge-assistant.md) | Knowledge Assistant (Agent Bricks) | 20m |
 | [5](modules/05-compound-agent.md) | Compound agent | 30m |
 | [5b](modules/05b-netops.md) | NetOps log analysis with `ai_query` (bulk inference over real outage reports) | 20m |
-| [6](modules/06-app.md) | App embed + live vibe-code | 25m |
+| [6](modules/06-app.md) | App embed (stock Apps template) | 25m |
 
 ## Public datasets
 
