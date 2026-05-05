@@ -71,7 +71,7 @@ EXTRACT_SCHEMA = """{
         "products":    {"type": "array", "items": {"type": "string"}},
         "mitigations": {"type": "array", "items": {"type": "string"}}
       },
-      "required": ["title", "summary", "cves"], "additionalProperties": False
+      "required": ["title", "summary", "cves", "vendors", "products", "mitigations"], "additionalProperties": False
     },
     "strict": true
   }
