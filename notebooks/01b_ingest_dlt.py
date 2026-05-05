@@ -87,7 +87,7 @@ def gold_advisories():
     extracted = src.selectExpr(
         "path",
         f"""ai_query(
-            'databricks-claude-haiku-4-5',
+            'databricks-gpt-5-mini',
             CONCAT(
               'Extract structured threat intelligence from this CISA advisory. Return JSON only.\\n\\n',
               LEFT(CAST(parsed AS STRING), 8000)
